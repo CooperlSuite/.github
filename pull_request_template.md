@@ -14,7 +14,9 @@
 ## Screenshots 
 -->
 
-## Checklist
-- [ ] Ticket Jira dans la colonne "Revue de code"
-- [ ] Self-review du code
+## Process
 - [ ] Test dev effectué
+- [ ] Self-review du code
+- [ ] Ticket Jira dans la colonne "Revue de code"
+- Relecture effectuée (par deux reviewers de préférence)
+- PR mergée son l'auteur
