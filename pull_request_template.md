@@ -1,6 +1,7 @@
-<!--  Titre de la PR :                                                              -->
-<!--  Le format suivant doit être respecté : <type>(<jira>): <description courte>   -->
-<!--  Le type corresond au type de ticket jira : bug, feature, task                 -->
+<!--  Titre de la PR :
+      Le format suivant doit être respecté : <type>(<jira>): <description courte>
+      Le type corresond au type de ticket Jira : bug, feature, task 
+-->
 
 ## Liens
 - Jira : 
@@ -8,7 +9,9 @@
 
 ## Description
 
-<!-- ## Screenshots -->
+<!-- 
+## Screenshots 
+-->
 
 ## Checklist
 - [ ] Ticket Jira dans la colone "Revue de code"
