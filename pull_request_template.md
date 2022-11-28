@@ -5,8 +5,8 @@
 -->
 
 ## Liens
-- Jira : 
 - PR liées :
+- Aucun lien
 
 ## Description
 
@@ -19,4 +19,4 @@
 - [ ] Self-review du code
 - [ ] Ticket Jira dans la colonne "Revue de code"
 - [ ] Relecture effectuée (par deux reviewers de préférence)
-- [ ] PR mergée son l'auteur
+- [ ] PR mergée son auteur
