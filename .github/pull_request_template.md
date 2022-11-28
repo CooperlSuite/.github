@@ -5,7 +5,6 @@
 -->
 ## Liens
 - PR liées :
-- Aucun lien
 
 ## Description
 
