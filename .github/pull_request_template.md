@@ -1,6 +1,9 @@
 <!--  Titre de la PR :
-      Le format suivant doit être respecté : <type>(<jira>): <description courte>
-      Le type corresond au type de ticket Jira : fix, feat, chore, etc. (https://www.conventionalcommits.org/en/v1.0.0/#summary)
+      Le format conventional commits doit être respecté : <type>(<jira>): <description courte>
+        https://www.conventionalcommits.org/en/v1.0.0/#summary
+      Le type corresond au type de ticket Jira : fix, feat, chore, etc.
+      Attention aux points de suspension que GitHub rajoute automatiquement...      
+
       Exemple : `bug(M16AA1-1111): Sortie des truies de la bande après sevrage ̀
 -->
 ## Liens
