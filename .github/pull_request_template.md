@@ -6,20 +6,20 @@
 
       Exemple : `bug(M16AA1-1111): Sortie des truies de la bande après sevrage ̀
 -->
+
+<!-- Retirer les sections qui ne s'appliquent pas -->
 ## Liens
 - PR liées :
 
 ## Description
 
 
-<!-- 
 ## Screenshots 
--->
 
 
 ## Process
 - [ ] Test dev effectué
 - [ ] Self-review du code
 - [ ] Ticket Jira dans la colonne "Revue de code"
-- [ ] Relecture effectuée (par deux reviewers de préférence)
-- [ ] PR mergée son auteur
+- Relecture par deux reviewers (de préférence)
+- PR mergée par son auteur
