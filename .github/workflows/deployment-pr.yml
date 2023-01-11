@@ -6,8 +6,57 @@ on:
         required: true
 jobs:
   conventional-commits:
-    if:  startsWith(github.head_ref, 'develop/')
+    if:  startsWith(github.base_ref, 'master/')
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "La branche cible de cette PR est ${github.head_ref}"
+          echo "[Deployment] PR ${{ github.head_ref }} -> ${{ github.base_ref }}"
+      
+      - name: Check if backport PR already exists
+        id: check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          prs=$(gh pr list \
+              --repo "$GITHUB_REPOSITORY" \
+              --json baseRefName,headRefName \
+              --jq '
+                  map(select(.baseRefName == "develop" and .headRefName == "${{ github.head_ref }}"))
+                  | length
+              ')
+          if ((prs > 0)); then
+              echo "Backport PR already exists" 
+              echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+          
+      - name: Add deployment label
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr edit ${{ github.event.pull_request.url }}  \
+             --repo "$GITHUB_REPOSITORY"                   \
+             --add-label deployment
+          
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Generate token
+        uses: tibdex/github-app-token@v1
+        id: generate-token
+        with:
+          app_id: ${{ secrets.PR_APP_ID }}
+          private_key: ${{ secrets.PR_APP_PRIVATE_KEY }}
+          
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ steps.generate-token.outputs.token }}
+          base: develop
+          title: ${{ github.event.pull_request.title }}
+          labels: backport
+          body: "Backport de la PR de déploiement: ${{ github.event.pull_request.url }}"
+          
+      - name: Add comment
+        if: ${{ steps.cpr.outputs.pull-request-number }}
+        run: |
+          echo "Backport PR: ${{ steps.cpr.outputs.pull-request-url }}"
