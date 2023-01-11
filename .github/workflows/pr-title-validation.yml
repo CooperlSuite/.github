@@ -5,7 +5,7 @@ on:
       token:
         required: true
 jobs:
-  check-name:
+  conventional-commits:
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
