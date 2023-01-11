@@ -29,14 +29,21 @@ jobs:
               echo "skip=true" >> "$GITHUB_OUTPUT"
           fi
           
+      - name: Create labels
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create deployment --force --color #FBCA04
+          gh label create backport --force --color #1D76DB
+          
       - name: Add deployment label
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh pr edit ${{ github.event.pull_request.number }}  \
-             --repo "$GITHUB_REPOSITORY"                   \
+             --repo "$GITHUB_REPOSITORY"                      \
              --add-label deployment
-          
+             
       - name: Checkout
         uses: actions/checkout@v3
         
@@ -52,7 +59,7 @@ jobs:
         with:
           token: ${{ steps.generate-token.outputs.token }}
           base: develop
-          title: ${{ github.event.pull_request.title }}
+          title: "[Backport] ${{ github.event.pull_request.title }}"
           labels: backport
           body: "Backport de la PR de déploiement: ${{ github.event.pull_request.url }}"
           
