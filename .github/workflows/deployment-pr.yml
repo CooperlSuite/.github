@@ -33,8 +33,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh label create deployment --force --color FBCA04
-          gh label create backport --force --color 1D76DB
+          gh label create deployment --force --color FBCA04   \
+             --repo "$GITHUB_REPOSITORY"
+          gh label create backport --force --color 1D76DB     \
+             --repo "$GITHUB_REPOSITORY"
           
       - name: Add deployment label
         env:
