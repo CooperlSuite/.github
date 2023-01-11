@@ -1,0 +1,14 @@
+name: PR Title Validation
+on:
+  workflow_call:
+    secrets:
+      token:
+        required: true
+jobs:
+  conventional-commits:
+    runs-on: ubuntu-latest
+    steps:
+      - run_if:
+          if:  startsWith(github.head_ref, 'develop/')
+      - run: |
+          echo "La branche cible de cette PR est ${github.head_ref}"
