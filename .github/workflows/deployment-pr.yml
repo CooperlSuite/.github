@@ -6,9 +6,8 @@ on:
         required: true
 jobs:
   conventional-commits:
+    if:  startsWith(github.head_ref, 'develop/')
     runs-on: ubuntu-latest
     steps:
-      - run_if:
-          if:  startsWith(github.head_ref, 'develop/')
       - run: |
           echo "La branche cible de cette PR est ${github.head_ref}"
