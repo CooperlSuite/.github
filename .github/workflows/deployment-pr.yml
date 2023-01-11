@@ -6,7 +6,7 @@ on:
         required: true
 jobs:
   deployment-pr:
-    # if: startsWith(github.base_ref, 'master/')
+    if: github.base_ref == 'master'
     runs-on: ubuntu-latest
     steps:
       - run: |
@@ -33,7 +33,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr edit ${{ github.event.pull_request.url }}  \
+          gh pr edit ${{ github.event.pull_request.number }}  \
              --repo "$GITHUB_REPOSITORY"                   \
              --add-label deployment
           
