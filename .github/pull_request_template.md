@@ -8,3 +8,4 @@
 - Relecture par deux reviewers (de préférence)
   - [ ] Auto-approbation : cette PR n'a pas besoin de relecture
 - PR mergée par son auteur
+- [ ] Backport : ne pas créer la PR de backport automatiquement
